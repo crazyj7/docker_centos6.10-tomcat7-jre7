@@ -33,7 +33,7 @@ ENV LD_LIBRARY_PATH=.:/usr/local/lib:$JAVA_HOME/bin:$CATALINA_HOME/bin
 ENV PATH=$PATH:/usr/java/latest/bin
 ENV HOME /root
 
-VOLUME ["/usr/local/tomcat/webapps"]
+VOLUME ["/usr/local/tomcat/webapps","/usr/local/lib"]
 EXPOSE 8080
 
 #CMD ["/bin/bash"]
