@@ -19,10 +19,14 @@ RUN /bin/ln -s /usr/java/jdk1.7.0_80 /usr/java/latest
 
 # install path ; /usr/share/tomcat7
 WORKDIR /usr/local
-ADD http://apache.tt.co.kr/tomcat/tomcat-7/v7.0.104/bin/apache-tomcat-7.0.104.tar.gz /usr/local
-RUN tar xvfz apache-tomcat-7.0.104.tar.gz
-#ADD apache-tomcat-7.0.104.tar.gz /usr/local
-RUN /bin/ln -s /usr/local/apache-tomcat-7.0.104 /usr/local/tomcat
+ADD https://downloads.apache.org/tomcat/tomcat-7/v7.0.107/bin/apache-tomcat-7.0.107.tar.gz /usr/local
+RUN tar xvfz apache-tomcat-7.0.107.tar.gz
+#ADD apache-tomcat-7.0.107.tar.gz /usr/local
+RUN /bin/ln -s /usr/local/apache-tomcat-7.0.107 /usr/local/tomcat
+
+# jce patch for jdk7
+COPY local_policy.jar /usr/java/latest/jre/lib/security/
+COPY US_export_policy.jar /usr/java/latest/jre/lib/security/
 
 # env
 WORKDIR /root
